@@ -14,14 +14,10 @@ from urllib.parse import urlparse
 import tensorflow as tf
 import pathlib
 
-#from numpy.random import seed
-#seed(1)
-
-#from tensorflow import set_random_seed
-tf.random.set_seed(2)
+from tensorflow import set_random_seed
+set_random_seed(2)
 
 def downloadFromUrl( url, targetDir=".", removeSource=False):
-
     wget.download(url)
     parseUrl = urlparse(url)
     baseName = os.path.basename(parseUrl.path)
@@ -213,7 +209,7 @@ print("\n")
 plt.figure(figsize = (15, 7))
 plt.title("The number of digits in the data", fontsize = 20)
 plt.xticks(range(10))
-plt.bar(val, cnt, color = mycolors);
+plt.bar(val, cnt, color = mycolors)
 
 
 model.summary()
@@ -544,9 +540,9 @@ print('='*80)
 print('How many images did our model correctly classify?')        
 print('='*80)
 print('The plot below shows how many handwritten letters for each class were classified')        
-print('incorrectly. The plot shows that for letters A, B, C, and E, the model does not')        
-print('correctly identify any images and correctly identified all images for the letter')        
-print('D.')
+print('incorrectly. The plot shows that for letters A, B, and E, the model does not')        
+print('correctly identify any images and correctly identified 2 images for the letter')        
+print('C and 1 image for the letter D.')
 print("\n")
 
 # Error shows the accuracy rate of A, C and D are 66.7%, B and E are 0%
@@ -678,8 +674,8 @@ print('='*80)
 print('Can we increase the accuracy of the model?')        
 print('='*80)
 print('We increased the epochs from 5 to 20 to see if that would affect the acccuracy.')        
-print('After increasing the epochs to 20, the plot below shows that the model showed ')        
-print('modest improvement in terms of accuracy.')        
+print('After increasing the epochs to 20, the model did not show any signs of improve-')        
+print('ment in terms of accuracy.')        
 print("\n")
 
 cnt_error = []
