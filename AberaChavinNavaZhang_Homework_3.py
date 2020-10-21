@@ -488,9 +488,9 @@ print('='*80)
 print('How many images did our model correctly classify?')        
 print('='*80)
 print('The plot below shows how many handwritten letters for each class were classified')        
-print('incorrectly. The plot shows that for letters A, C, and D, the model correctly')        
-print('identified 2 out of the 3 images and did not correctly identify any of the the')        
-print('images for letters B or E.')        
+print('incorrectly. The plot shows that for letters A, B, C, and E, the model does not')        
+print('correctly identify any images and correctly identified all images for the letter')        
+print('D.')
 print("\n")
 
 # Error shows the accuracy rate of A, C and D are 66.7%, B and E are 0%
@@ -590,17 +590,6 @@ for idx, (a, b) in enumerate(zip(test_label_all,y_pred)):
 ##   Refinement   ##
 ####################
 
-print('='*80)
-print('Can we increase the accuracy of the model?')        
-print('='*80)
-print('We increased the epochs from 5 to 20 to see if that would affect the acccuracy.')        
-print('After increasing the epochs to 20, the plot below shows that the model now')        
-print('correctly identified all images of the letter A and did not correctly identify')        
-print('any of the images for letter B. It also only correctly identified 1 of the images')        
-print('for both the letters C and E and two images for the letter D.')        
-print("\n")
-
-
 epochs = 20
 
 # Run model again.
@@ -629,7 +618,14 @@ y_pred = model.predict(test_img.reshape(15,28,28,1))
 
 y_pred
 
-
+print('='*80)
+print('Can we increase the accuracy of the model?')        
+print('='*80)
+print('We increased the epochs from 5 to 20 to see if that would affect the acccuracy.')        
+print('After increasing the epochs to 20, the plot below shows that the model did not')        
+print('correctly identify any of the images for the letters A, C, and E and only correctly')        
+print('identified 1 image for the letter B and 2 images for the letter D.')        
+print("\n")
 
 cnt_error = []
 for idx, (a, b) in enumerate(zip(test_label_all,y_pred)):
