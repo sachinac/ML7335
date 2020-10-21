@@ -274,7 +274,7 @@ mnist_model.summary()
     image = train_hw_images[0]
     image = image.reshape((1, image.shape[0], image.shape[1], image.shape[2]))
     yhat  = mnist_model.predict(train_hw_images[0])
-
+    
 # example of using a pre-trained model as a classifier
 from keras.preprocessing.image import load_img
 from keras.preprocessing.image import img_to_array
