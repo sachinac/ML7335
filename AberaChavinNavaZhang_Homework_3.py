@@ -9,6 +9,12 @@ from keras import backend as K
 import numpy as np
 import pandas as pd
 
+from numpy.random import seed
+seed(1)
+
+from tensorflow import set_random_seed
+set_random_seed(2)
+
 print('='*80)
 print('Group Member Names:')        
 print('='*80)
