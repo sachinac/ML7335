@@ -308,34 +308,49 @@ plt.show()
 print('='*80)
 print('Import our handwritten dataset')        
 print('='*80)
-print('The dataset consists of 10 handwritten samples for the letters A-E')        
-print('for a total of 50 observations.')        
+print('The dataset consists of 10 handwritten samples for the letters A-E for a total')        
+print('of 50 observations.')        
 
 print("\n")
 
-#import cv2
+import cv2
 from keras.preprocessing import image
-
 
 
 
 ################################################
 ###           Create Training Set            ###
 ################################################
-from PIL import Image
-import urllib.request
-import io
+#from PIL import Image
+#import urllib.request
+#import io
 
-train=pd.read_csv("https://raw.githubusercontent.com/sachinac/ML7335/main/train.csv", header=None)
-train_path="https://github.com/sachinac/ML7335/tree/main/train"
+#train=pd.read_csv("https://raw.githubusercontent.com/sachinac/ML7335/main/train.csv", header=None)
+#train_path="https://github.com/sachinac/ML7335/tree/main/train"
 
+
+#train_img=[]
+#for i in range(len(train)):
+
+#    f = io.BytesIO(urllib.request.urlopen(train_path+train[0][i]).read())
+
+#    temp_img = Image.open(f)
+
+#    #temp_img=image.load_img(train_path+train[0][i],target_size=(28,28))
+
+#    temp_img=image.img_to_array(temp_img)
+
+#    train_img.append(temp_img)
+
+
+
+train=pd.read_csv("train.csv",header=None)  #Your own path
+train_path="train/" #Your own path
 
 train_img=[]
 for i in range(len(train)):
 
-    f = io.BytesIO(urllib.request.urlopen(train_path+train[0][i]).read())
-
-    temp_img = Image.open(f)
+    temp_img=image.load_img(train_path+train[0][i],target_size=(28,28))
 
     temp_img=image.img_to_array(temp_img)
 
@@ -344,28 +359,46 @@ for i in range(len(train)):
 train_img=np.array(train_img)
 train_img.shape
 
+# Compress from 3 channels to 1 channel.
+train_img = train_img[:,:,:,0]
+train_img.shape
+
 ################################################
 ###             Create Test Set              ###
 ################################################
 
-test=pd.read_csv("https://raw.githubusercontent.com/sachinac/ML7335/main/test.csv",header=None)
-test_path="https://raw.githubusercontent.com/sachinac/ML7335/main/test"
+#test=pd.read_csv("https://raw.githubusercontent.com/sachinac/ML7335/main/test.csv",header=None)
+#test_path="https://raw.githubusercontent.com/sachinac/ML7335/main/test"
+
+#test_img=[]
+#for i in range(len(test)):
+
+#    f = io.BytesIO(urllib.request.urlopen(test_path+test[0][i]).read())
+    
+#    temp_img = Image.open(f)
+
+#    #temp_img=image.load_img(test_path+test[0][i],target_size=(28,28))
+
+#    temp_img=image.img_to_array(temp_img)
+
+#    test_img.append(temp_img)
+
+test=pd.read_csv("test.csv", header=None) #Your own path
+test_path="test/" #Your own path
 
 test_img=[]
 for i in range(len(test)):
 
-    f = io.BytesIO(urllib.request.urlopen(test_path+test[0][i]).read())
-
-    temp_img = Image.open(f)
+    temp_img=image.load_img(test_path+test[0][i],target_size=(28,28))
 
     temp_img=image.img_to_array(temp_img)
 
     test_img.append(temp_img)
 
-# Compress from 3 channels to 1 channel.
-train_img = train_img[:,:,:,0]
-train_img.shape
+test_img=np.array(test_img)
+test_img.shape
 
+# Compress from 3 channels to 1 channel.
 test_img = test_img[:,:,:,0]
 test_img.shape
 
