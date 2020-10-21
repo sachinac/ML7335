@@ -509,7 +509,7 @@ plt.show()
 
 
 print('='*80)
-print('Our model incorrectly predicted the following images:')        
+print('Our model incorrectly classified the following images:')        
 print('='*80)
 print("\n")
 
@@ -622,9 +622,8 @@ print('='*80)
 print('Can we increase the accuracy of the model?')        
 print('='*80)
 print('We increased the epochs from 5 to 20 to see if that would affect the acccuracy.')        
-print('After increasing the epochs to 20, the plot below shows that the model did not')        
-print('correctly identify any of the images for the letters A, C, and E and only correctly')        
-print('identified 1 image for the letter B and 2 images for the letter D.')        
+print('After increasing the epochs to 20, the plot below shows that the model showed ')        
+print('modest improvement in terms of accuracy.')        
 print("\n")
 
 cnt_error = []
